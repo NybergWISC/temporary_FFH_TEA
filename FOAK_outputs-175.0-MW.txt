@@ -1,0 +1,92 @@
+Account Number,Level,Account Name,Indented Name,Cost,Cost Fraction
+10,0,Pre-Construction Costs,10 Pre-Construction Costs,24.18611754,0.01356498285
+11,1,Land and Land Rights,    11 Land and Land Rights,1.18611754,0.000665243773
+12,1,Site Permits,    12 Site Permits,10,0.005608582206
+13,1,Plant Licensing,    13 Plant Licensing,0,0
+14,1,Plant Permits,    14 Plant Permits,5,0.002804291103
+15,1,Plant Studies,    15 Plant Studies,5,0.002804291103
+16,1,Plant Reports,    16 Plant Reports,2,0.001121716441
+17,1,Other Pre-Construction Costs,    17 Other Pre-Construction Costs,1,0.0005608582206
+19,1,Contingency on Pre-Construction Costs,    19 Contingency on Pre-Construction Costs,0,0
+20,0,Capitalized Direct Costs (CDC),20 Capitalized Direct Costs (CDC),1298.175963,0.7280926606
+21,1,Structures and Improvements,    21 Structures and Improvements,112.9457941,0.06334657711
+21.1,2,Site Preparation/Yard Work,        21.1 Site Preparation/Yard Work,42.37641442,0.02376716039
+21.2,2,Heat Island Building,        21.2 Heat Island Building,29.53699334,0.01656606553
+21.3,2,Turbine Generator Building,        21.3 Turbine Generator Building,8.538531265,0.004788905452
+21.4,2,Heat Exchanger Building,        21.4 Heat Exchanger Building,5.976971885,0.003352233816
+21.5,2,Power Supply and Energy Storage,        21.5 Power Supply and Energy Storage,1.707706253,0.0009577810903
+21.6,2,Reactor Auxiliaries,        21.6 Reactor Auxiliaries,0.8538531265,0.0004788905452
+21.7,2,Hot Cell,        21.7 Hot Cell,14.76849667,0.008283032763
+21.8,2,Reactor Services,        21.8 Reactor Services,2.956861753,0.001658380221
+21.9,2,Service Water,        21.9 Service Water,0.0474362848,0.00002660503029
+21.10,2,Fuel Storage,        21.10 Fuel Storage,0.1739330443,0.00009755177772
+21.11,2,Control Room,        21.11 Control Room,0.1423088544,0.00007981509086
+21.12,2,Onsite AC Power,        21.12 Onsite AC Power,0.1264967595,0.00007094674743
+21.13,2,Administration,        21.13 Administration,0.6957321771,0.0003902071109
+21.14,2,Site Services,        21.14 Site Services,0.252993519,0.0001418934949
+21.15,2,Cryogenics,        21.15 Cryogenics,0.3794902784,0.0002128402423
+21.16,2,Security,        21.16 Security,0.1423088544,0.00007981509086
+21.17,2,Ventilation Stack,        21.17 Ventilation Stack,4.269265632,0.002394452726
+22,1,Heat Island Plant Equipment,    22 Heat Island Plant Equipment,1111.99892,0.6236737356
+22.1,2,Heat Island Components,        22.1 Heat Island Components,901.9675668,0.5058759246
+22.1.1,3,First Wall and Blanket,            22.1.1 First Wall and Blanket,43.19343421,0.02422539265
+22.1.2,3,Magnet Radiation Shield,            22.1.2 Magnet Radiation Shield,94.73695574,0.05313400042
+22.1.3,3,Coils,            22.1.3 Coils,272.0399768,0.1525758573
+22.1.3.1,4,HF Coils,                22.1.3.1 HF Coils,116.4,0.06528389688
+22.1.3.2,4,LF Coils,                22.1.3.2 LF Coils,12.50524,0.007013666655
+22.1.3.3,4,CC Coils,                22.1.3.3 CC Coils,143.1347368,0.08027829381
+22.1.4,3,Supplemental Heating,            22.1.4 Supplemental Heating,227.453,0.1275688849
+22.1.4.1,4,NBI,                22.1.4.1 NBI,105.963,0.05943021963
+22.1.4.2,4,ICRH,                22.1.4.2 ICRH,41.49,0.02327000757
+22.1.4.3,4,ECH,                22.1.4.3 ECH,80,0.04486865765
+22.1.5,3,Primary Structure and Support,            22.1.5 Primary Structure and Support,0,0
+22.1.6,3,Vacuum System,            22.1.6 Vacuum System,2.031827257,0.00113956702
+22.1.6.2,4,Vessel Refrigerators,                22.1.6.2 Vessel Refrigerators,0,0
+22.1.6.3,4,Primary Vacuum Pumps,                22.1.6.3 Primary Vacuum Pumps,1.689827257,0.0009477535084
+22.1.6.4,4,Backing Vacuum Pumps,                22.1.6.4 Backing Vacuum Pumps,0.342,0.0001918135114
+22.1.7,3,Power Supplies,            22.1.7 Power Supplies,0,0
+22.1.8,3,Divertor,            22.1.8 Divertor,0,0
+22.1.9,3,Direct Energy Convertor,            22.1.9 Direct Energy Convertor,109.3171648,0.06131143055
+22.1.11,3,Assembly and Installation Costs,            22.1.11 Assembly and Installation Costs,153.1952079,0.08592079173
+22.2,2,Main and Secondary Coolant,        22.2 Main and Secondary Coolant,33.6494515,0.01887257149
+22.3,2,Auxiliary Cooling Systems,        22.3 Auxiliary Cooling Systems,0.3521982635,0.0001975332914
+22.4,2,Radioactive Waste Treatment,        22.4 Radioactive Waste Treatment,0.6275532695,0.0003519684101
+22.5,2,Fuel Handling and Storage,        22.5 Fuel Handling and Storage,88.65405229,0.04972235402
+22.6,2,Other Heat Island Equipment,        22.6 Other Heat Island Equipment,1.748097852,0.0009804350505
+22.7,2,Instrumentation and Control,        22.7 Instrumentation and Control,85,0.04767294875
+23,1,Turbine Plant Equipment,    23 Turbine Plant Equipment,39.82276109,0.02233492293
+24,1,Electric Plant Equipment,    24 Electric Plant Equipment,9.819310954,0.005507241269
+25,1,Miscellaneous Plant Equipment,    25 Miscellaneous Plant Equipment,6.909885486,0.003875466078
+26,1,Heat Rejection,    26 Heat Rejection,11.67929132,0.00655042655
+27,1,Special Materials,    27 Special Materials,0,0
+28,1,Digital Twin/Simulator,    28 Digital Twin/Simulator,5,0.002804291103
+29,1,Contingency on Direct Capital Costs,    29 Contingency on Direct Capital Costs,0,0
+30,0,Capitalized Indirect Service Costs (CISC),30 Capitalized Indirect Service Costs (CISC),71.59197058,0.04015294523
+31,1,Field Indirect Costs,    31 Field Indirect Costs,14.31839412,0.008030589046
+32,1,Construction Supervision,    32 Construction Supervision,35.79598529,0.02007647261
+33,1,Commissioning and Start-Up Costs,    33 Commissioning and Start-Up Costs,0,0
+34,1,Demonstration Test Run,    34 Demonstration Test Run,0,0
+35,1,Design Services Offsite,    35 Design Services Offsite,21.47759117,0.01204588357
+36,1,PM/CM Services Offsite,    36 PM/CM Services Offsite,0,0
+37,1,Design Servies Offsite,    37 Design Servies Offsite,0,0
+38,1,PM/CM Services Onsite,    38 PM/CM Services Onsite,0,0
+39,1,Contingency on Support Services,    39 Contingency on Support Services,0,0
+40,0,Capitalized Owner's Cost (COC),40 Capitalized Owner's Cost (COC),155.7811156,0.08737111928
+50,0,Capitalized Supplementary Costs (CSC),50 Capitalized Supplementary Costs (CSC),37.83719261,0.02122130052
+51,1,Shipping and Transportation Costs,    51 Shipping and Transportation Costs,8,0.004486865765
+52,1,Spare Parts,    52 Spare Parts,7.323124886,0.004107234793
+53,1,Taxes,    53 Taxes,0,0
+54,1,Insurance,    54 Insurance,1,0.0005608582206
+55,1,Initial Fuel Load,    55 Initial Fuel Load,21.51406772,0.01206634174
+58,1,Decommissioning Costs,    58 Decommissioning Costs,0,0
+59,1,Contingency on Supplementary Costs,    59 Contingency on Supplementary Costs,0,0
+60,0,Capitalized Financial Costs (CFC),60 Capitalized Financial Costs (CFC),195.4094412,0.1095969915
+61,1,Escalation,    61 Escalation,20.125,0.01128727169
+62,1,Fees,    62 Fees,0,0
+63,1,Interest During Construction (IDC),    63 Interest During Construction (IDC),175.2844412,0.09830971981
+69,1,Contingency on Capitalized Financial Costs,    69 Contingency on Capitalized Financial Costs,0,0
+OCC,0,Overnight Capital Cost (OCC),OCC Overnight Capital Cost (OCC),1587.572359,0.8904030085
+TCC,0,Total Capital Cost (TCC),TCC Total Capital Cost (TCC),1782.981801,1
+O&M,0,Operations and Maintenance,O&M Operations and Maintenance,5.69490028,0.003194031637
+Fuel,0,Fuel,Fuel Fuel,0.1090042081,0.00006113590621
+81,1,Deuterium,    81 Deuterium,0.04739117657,0.00002657973096
