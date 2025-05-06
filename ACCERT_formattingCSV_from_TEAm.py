@@ -21,8 +21,7 @@ formattedCopy[0] = ["ind", "code_of_account", "account_description", "total_cost
 
 ### GENERAL FORMATTING VARIABLES ### 
 
-# Account numbers
-
+## Account numbers
 
 for account_iter in range(coaNumRows):
     # Adds the ind numbers in
@@ -67,6 +66,83 @@ for account_iter in range(coaNumRows):
 
     # variables TODO
 
-    
+## Variables 
+
+import importlib
+import inspect
+import ast
+
+# Export all variables to CSV
+def export_variables_to_csv(filename="variables.csv"):
+    """Exports all variables in the current scope to a CSV file."""
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        # Write header row
+        writer.writerow(["Variable Name", "Variable Value", "Variable Type"])
+        # Get variables from current scope
+        variables = globals().copy()
+        # Remove built-in variables and the function itself from the dictionary
+        to_remove = [name for name in variables if name.startswith('__') or name == export_variables_to_csv.__name__]
+        for name in to_remove:
+            del variables[name]
+        # Write data rows
+        for name, value in variables.items():
+            writer.writerow([name, value, type(value).__name__])
+
+
+# Find all variables and arguments in a certain function
+def analyze_function(func):
+    print(f"Function: {func.__name__}")
+
+    # Arguments
+    sig = inspect.signature(func)
+    print("  Arguments:")
+    for param in sig.parameters.values():
+        print(f"    {param.name} (default={param.default})")
+
+    # Local variables via AST
+    print("  Local Variables:")
+    source = inspect.getsource(func)
+    tree = ast.parse(source)
+
+    class LocalVarVisitor(ast.NodeVisitor):
+        def __init__(self):
+            self.local_vars = set()
+
+        def visit_Assign(self, node):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    self.local_vars.add(target.id)
+            self.generic_visit(node)
+
+        def visit_AnnAssign(
+            self, node
+        ):  # for annotated assignments (e.g. x: int = 1)
+            if isinstance(node.target, ast.Name):
+                self.local_vars.add(node.target.id)
+            self.generic_visit(node)
+
+    visitor = LocalVarVisitor()
+    visitor.visit(tree)
+    for var in sorted(visitor.local_vars):
+        print(f"    {var}")
+
+# Analyze each function for every object in the module
+def analyze_module(module_name):
+    mod = importlib.import_module(module_name)
+    for name, obj in inspect.getmembers(mod, inspect.isfunction):
+        if obj.__module__ == module_name:
+            analyze_function(obj)
+
+
+# Example use
+# analyze_module("your_module_name_here")
+analyze_module("matthew_ex")
+
+# Example Usage:
+x = 10
+y = "hello"
+z = [1, 2, 3]
+export_variables_to_csv()
 
 print(formattedCopy)
