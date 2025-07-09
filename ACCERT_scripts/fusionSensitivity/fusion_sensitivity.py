@@ -137,16 +137,16 @@ if np.size(sc_rows)>0:
     os.chdir(f"./combinedSC")
     for run_key in runs.keys():
         with open(f'temp_fusion_input_combinedSC_{run_key}.son', 'w') as temp_input_file:
-            firstLines = templateLines[:5]
+            firstLines = templateLines[:6]
             lastLines = templateLines[7:]
+            tempLines = firstLines[:]
             for sc_row in sc_rows:
-                tempLines = firstLines[:]
                 tempLines.append(f"    var(\"{sc_row[1]}\")" + "{" + f"value = {float(sc_row[2])*runs[run_key]} unit = \"{sc_row[3]}\"" + "}\n")
             for lines in lastLines:
                 tempLines.append(lines)
             temp_input_file.writelines(tempLines)
         # subprocess.run(["python3", "/home/mnyberg/Desktop/installs/ACCERT/src/Main_modified.py", "-i", f"temp_fusion_input_{rows[1]}_{run_key}.son"], check = True)
-        subprocess.run(["python3", "/home/mnyberg/Desktop/installs/ACCERT_jia/ACCERT/src/Main.py", "-i", f"temp_fusion_input_{rows[1]}_{run_key}.son"], check = True)
+        subprocess.run(["python3", "/home/mnyberg/Desktop/installs/ACCERT_jia/ACCERT/src/Main.py", "-i", f"temp_fusion_input_combinedSC_{run_key}.son"], check = True)
         # subprocess.run(["python3", "/home/mnyberg/Desktop/installs/ACCERT_jia/ACCERT_7_4/src/Main.py", "-i", f"temp_fusion_input_{rows[1]}_{run_key}.son"], check = True)
         # subprocess.run(["python3", "/home/mnyberg/Desktop/installs/ACCERT/src/Main.py", "-i", f"temp_fusion_input_{rows[1]}_{run_key}.son"], check = True)
         # os.system(f"python3 /home/mnyberg/Desktop/installs/ACCERT/src/Main_modified.py -i temp_fusion_input_{rows[1]}_{run_key}.son")

@@ -1,0 +1,8 @@
+% ACCERT Fusion File Template
+% Author: M. Nyberg (mnyberg@wisc.edu)
+% Last updated: 06/30/2025
+
+accert{
+    ref_model = "stellarator"
+    var("cconshpf"){value = 35.0 unit = "$/m"}
+}

@@ -1,0 +1,8 @@
+% ACCERT Fusion File Template
+% Author: M. Nyberg (mnyberg@wisc.edu)
+% Last updated: 06/30/2025
+
+accert{
+    ref_model = "stellarator"
+    var("ucint"){value = 70.0 unit = "$/kg"}
+}

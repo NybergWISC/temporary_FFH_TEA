@@ -1,0 +1,8 @@
+% ACCERT Fusion File Template
+% Author: M. Nyberg (mnyberg@wisc.edu)
+% Last updated: 06/30/2025
+
+accert{
+    ref_model = "fusion"
+    var("ucsh"){value = 57.5 unit = "M$/m3"}
+}

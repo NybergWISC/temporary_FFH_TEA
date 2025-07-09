@@ -1,0 +1,16 @@
+% ACCERT Fusion File Template
+% Author: M. Nyberg (mnyberg@wisc.edu)
+% Last updated: 06/30/2025
+
+accert{
+    ref_model = "stellarator"
+    var("ucsc_0"){value = 1200.0 unit = "$/kg"}
+    var("ucsc_1"){value = 1200.0 unit = "$/kg"}
+    var("ucsc_2"){value = 600.0 unit = "$/kg"}
+    var("ucsc_3"){value = 1200.0 unit = "$/kg"}
+    var("ucsc_4"){value = 1200.0 unit = "$/kg"}
+    var("ucsc_5"){value = 1200.0 unit = "$/kg"}
+    var("ucsc_6"){value = 600.0 unit = "$/kg"}
+    var("ucsc_7"){value = 2400.0 unit = "$/kg"}
+    var("ucsc_8"){value = 2400.0 unit = "$/kg"}
+}
