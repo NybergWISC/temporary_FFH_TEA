@@ -1,0 +1,81 @@
+ind,alg_name,alg_description,alg_python,alg_formulation,alg_units,variables,constants
+1,__init__,None,__init__,TODO,TODO,self,TODO
+2,add_account,Add an account to the cost_account object.,add_account,TODO,TODO,"self,  account_number,  account_name,  cost",TODO
+3,generate_report,Generate a report based on user input.,generate_report,TODO,TODO,"application='heat',  P_f=0,  P_f_L=0,  P_NBI=0,  P_ECH=0,  P_ICRH=0,  construction_time=6,  NOAK=False,  n_unit=False,  lifetime=30,  replacement=10,  availability=0.9,  discount=0.0245,  cost_file='woodruff-data.csv',  method='new',  include_tax=False,  include_decommissioning=False,  include_licensing=False,  include_contingency=False,  save=True,  verbose=True,  vacuum_gap_CC=0.01,  first_wall_material='W',  first_wall_thickness=0.01,  vacuum_vessel_material='SS316',  vacuum_vessel_thickness=0.01,  multiplier_material='Pb',  multiplier_thickness=0.01,  blanket_coolant_material='Natural PbLi',  blanket_thickness=1.0,  blanket_coolant_fraction=0.9,  blanket_structural_material='SS316',  blanket_structural_fraction=0.1,  outer_vessel_thickness=0.01,  **kwargs",TODO
+4,learning_credit,None,learning_credit,TODO,TODO,"p,  n",TODO
+5,Account_C20,Account C20 Rollup,Account_C20,TODO,million,inputs,TODO
+6,Account_C21,Account C21 Rollup,Account_C21,TODO,million,inputs,TODO
+7,Account_C21_1,Account C211 Rollup,Account_C21_1,TODO,million,inputs,TODO
+8,Account_C21_2,Account C212 Rollup,Account_C21_2,TODO,million,inputs,TODO
+9,Account_C21_3,Account C213 Rollup,Account_C21_3,TODO,million,inputs,TODO
+10,Account_C21_4,Account C214 Rollup,Account_C21_4,TODO,million,inputs,TODO
+11,Account_C21_5,Account C215 Rollup,Account_C21_5,TODO,million,inputs,TODO
+12,Account_C21_6,Account C216 Rollup,Account_C21_6,TODO,million,inputs,TODO
+13,Account_C21_7,Account C217 Rollup,Account_C21_7,TODO,million,inputs,TODO
+14,Account_C21_8,Account C218 Rollup,Account_C21_8,TODO,million,inputs,TODO
+15,Account_C21_9,Account C219 Rollup,Account_C21_9,TODO,million,inputs,TODO
+16,Account_C21_10,Account C2110 Rollup,Account_C21_10,TODO,million,inputs,TODO
+17,Account_C21_11,Account C2111 Rollup,Account_C21_11,TODO,million,inputs,TODO
+18,Account_C21_12,Account C2112 Rollup,Account_C21_12,TODO,million,inputs,TODO
+19,Account_C21_13,Account C2113 Rollup,Account_C21_13,TODO,million,inputs,TODO
+20,Account_C21_14,Account C2114 Rollup,Account_C21_14,TODO,million,inputs,TODO
+21,Account_C21_15,Account C2115 Rollup,Account_C21_15,TODO,million,inputs,TODO
+22,Account_C21_16,Account C2116 Rollup,Account_C21_16,TODO,million,inputs,TODO
+23,Account_C21_17,Account C2117 Rollup,Account_C21_17,TODO,million,inputs,TODO
+24,Account_C22,Account C22 Rollup,Account_C22,TODO,million,inputs,TODO
+25,Account_C22_1,Account C221 Rollup,Account_C22_1,TODO,million,inputs,TODO
+26,Account_C22_1_1,Account C2211 Rollup,Account_C22_1_1,TODO,million,inputs,TODO
+27,Account_C22_1_2,Account C2212 Rollup,Account_C22_1_2,TODO,million,inputs,TODO
+28,Account_C22_1_3,Account C2213 Rollup,Account_C22_1_3,TODO,million,inputs,TODO
+29,Account_C22_1_3_1,Account C22131 Rollup,Account_C22_1_3_1,TODO,million,inputs,TODO
+30,Account_C22_1_3_2,Account C22132 Rollup,Account_C22_1_3_2,TODO,million,inputs,TODO
+31,Account_C22_1_3_3,Account C22133 Rollup,Account_C22_1_3_3,TODO,million,inputs,TODO
+32,Account_C22_1_4,Account C2214 Rollup,Account_C22_1_4,TODO,million,inputs,TODO
+33,Account_C22_1_4_1,Account C22141 Rollup,Account_C22_1_4_1,TODO,million,inputs,TODO
+34,Account_C22_1_4_2,Account C22142 Rollup,Account_C22_1_4_2,TODO,million,inputs,TODO
+35,Account_C22_1_4_3,Account C22143 Rollup,Account_C22_1_4_3,TODO,million,inputs,TODO
+36,Account_C22_1_5,Account C2215 Rollup,Account_C22_1_5,TODO,million,inputs,TODO
+37,Account_C22_1_6,Account C2216 Rollup,Account_C22_1_6,TODO,million,inputs,TODO
+38,Account_C22_1_6_2,Account C22162 Rollup,Account_C22_1_6_2,TODO,million,inputs,TODO
+39,Account_C22_1_6_3,Account C22163 Rollup,Account_C22_1_6_3,TODO,million,inputs,TODO
+40,Account_C22_1_6_4,Account C22164 Rollup,Account_C22_1_6_4,TODO,million,inputs,TODO
+41,Account_C22_1_7,Account C2217 Rollup,Account_C22_1_7,TODO,million,inputs,TODO
+42,Account_C22_1_8,Account C2218 Rollup,Account_C22_1_8,TODO,million,inputs,TODO
+43,Account_C22_1_9,Account C2219 Rollup,Account_C22_1_9,TODO,million,inputs,TODO
+44,Account_C22_1_11,Account C22111 Rollup,Account_C22_1_11,TODO,million,inputs,TODO
+45,Account_C22_2,Account C222 Rollup,Account_C22_2,TODO,million,inputs,TODO
+46,Account_C22_2_1,Account C2221 Rollup,Account_C22_2_1,TODO,million,inputs,TODO
+47,Account_C22_2_2,Account C2222 Rollup,Account_C22_2_2,TODO,million,inputs,TODO
+48,Account_C22_2_3,Account C2223 Rollup,Account_C22_2_3,TODO,million,inputs,TODO
+49,Account_C22_3,Account C223 Rollup,Account_C22_3,TODO,million,inputs,TODO
+50,Account_C22_4,Account C224 Rollup,Account_C22_4,TODO,million,inputs,TODO
+51,Account_C22_5,Account C225 Rollup,Account_C22_5,TODO,million,inputs,TODO
+52,Account_C22_6,Account C226 Rollup,Account_C22_6,TODO,million,inputs,TODO
+53,Account_C22_7,Account C227 Rollup,Account_C22_7,TODO,million,inputs,TODO
+54,Account_C23,Account C23 Rollup,Account_C23,TODO,million,inputs,TODO
+55,Account_C24,Account C24 Rollup,Account_C24,TODO,million,inputs,TODO
+56,Account_C25,Account C25 Rollup,Account_C25,TODO,million,inputs,TODO
+57,Account_C26,Account C26 Rollup,Account_C26,TODO,million,inputs,TODO
+58,Account_C27,Account C27 Rollup,Account_C27,TODO,million,inputs,TODO
+59,Account_C28,Account C28 Rollup,Account_C28,TODO,million,inputs,TODO
+60,Account_C29,Account C29 Rollup,Account_C29,TODO,million,inputs,TODO
+61,Account_OCC,Account OCC Rollup,Account_OCC,TODO,million,inputs,TODO
+62,Account_TCC,Account TCC Rollup,Account_TCC,TODO,million,inputs,TODO
+63,Account_C90,Account C90 Rollup,Account_C90,TODO,million,inputs,TODO
+64,PbLi_density,"Returns PbLi density [kg/m^3]. Assumes the PbLi is a eutectic, which has",PbLi_density,TODO,TODO,"f_6Li=0.075,  T=300",TODO
+65,Li_price,Return Li price (USD/kg) for enrichment levels above 90% 6Li,Li_price,TODO,TODO,f_6Li=0.075,TODO
+66,PbLi_price,None,PbLi_price,TODO,TODO,"f_6Li,  P_Pb",TODO
+67,V_cylindrical_shell,Return volume of a cylindrical shell,V_cylindrical_shell,TODO,TODO,"r_in,  r_out,  L",TODO
+68,V_inverse_triangular_washer,Return volume of cylindrical inverse triangular washer.,V_inverse_triangular_washer,TODO,TODO,"z,  r_in,  r_out",TODO
+69,generate_inputs,Return a dict containing all inputs for a techno-economic analysis.,generate_inputs,TODO,TODO,"application='heat',  P_f=1,  P_f_L=1,  P_f_EP=1,  P_NBI=1,  P_ECH=1,  P_ICRH=1,  M_n=1.1,  N_module=1,  f_pump=0.03,  f_sub=0.04,  f_cryo=0.01,  P_pump=1,  P_sub_cont=1,  P_cryo=1,  P_pfcool=0,  P_thcool=0,  P_coils=0,  P_aux=1,  eta_th=0.5,  eta_DEC=0.9,  eta_pump=0.98,  eta_NBI=0.5,  eta_ECH=0.5,  eta_ICRH=0.5,  verbose=False,  exact=False,  NOAK=False,  n_unit=False,  construction_time=6,  lifetime=30,  replacement=10,  availability=0.9,  discount=0.0245,  LSA=2,  cost_file='woodruff-data.csv',  method='new',  include_decommissioning=False,  include_tax=False,  include_licensing=False,  include_contingency=False,  hf_magnet_length=1,  hf_magnet_shielding_thickness=1,  a_EC=1,  expander_cell_vessel_thickness=0.01,  expander_cell_vessel_material='SS316',  vacuum_gap_CC=0.01,  first_wall_material='W',  first_wall_thickness=0.01,  vacuum_vessel_material='SS316',  vacuum_vessel_thickness=0.01,  multiplier_material='Pb',  multiplier_thickness=0.01,  blanket_coolant_material='Natural PbLi',  blanket_thickness=1.0,  blanket_coolant_fraction=0.9,  blanket_structural_material='SS316',  blanket_structural_fraction=0.1,  outer_vessel_thickness=0.01,  L_EP=1,  L_EC=1,  a_CC=1,  a_EP=1,  save=True,  load=False,  filename=None,  run_name=None",TODO
+70,create_radial_build,None,create_radial_build,TODO,TODO,"name,  material,  thickness,  f_vol=1.0",TODO
+71,add_new_layer,None,add_new_layer,TODO,TODO,"data,  name,  material,  thickness,  f_vol=1.0",TODO
+72,add_fractional_layer,None,add_fractional_layer,TODO,TODO,"data,  name,  material,  f_vol=1.0",TODO
+73,build_central_cell,None,build_central_cell,TODO,TODO,inputs,TODO
+74,central_cell_cost,None,central_cell_cost,TODO,TODO,"inputs,  L=1.0",TODO
+75,central_cell,None,central_cell,TODO,TODO,"inputs,  L=1.0",TODO
+76,expander_cell_cost,Each expander cell is made up of:,expander_cell_cost,TODO,TODO,inputs,TODO
+77,HF_magnet_cost,None,HF_magnet_cost,TODO,TODO,inputs,TODO
+78,LF_magnet_cost,None,LF_magnet_cost,TODO,TODO,inputs,TODO
+79,CF_magnet_cost,None,CF_magnet_cost,TODO,TODO,inputs,TODO
+80,HF_magnet_shield_cost,The HF coils have annular shield with a U-shaped cross section:,HF_magnet_shield_cost,TODO,TODO,"inputs,  verbose=False",TODO
