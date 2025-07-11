@@ -13,6 +13,8 @@ class CodeAnalyzer(ast.NodeVisitor):
 
     ind_iter=0
     func_iter=0
+    account_iter=0
+    account_variables={}
 
     def __init__(self):
         self.records = []
@@ -37,28 +39,53 @@ class CodeAnalyzer(ast.NodeVisitor):
             })
         
         ["ind", "alg_name", "alg_description", "alg_python", "alg_formulation", "alg_units", "variables", "constants"]
+        ['ind', 'code_of_account', 'account_description', 'total_cost (M$)', 'total_cost ($)', 'level', 'prn', 'supaccount', 'alg_name', 'fun_unit', 'variables', 'algno']
         self.func_iter=self.func_iter+1
-        if "Account" in node.name or "account" in node.name:
+        # Special handling for account rollup functions
+        if "Account" in node.name: #  or "account" in node.name:
+            self.account_iter=self.account_iter+1
             description_text = re.sub("(?i)account", "", node.name).replace("_","")
+            # Account rollup function
             self.records.append({
                 "Type": "function",
                 "ind":self.func_iter,
                 "alg_name": node.name,
-                "alg_for":"", # v or c based on variable vs overall code
+                "alg_for":"c", # v or c based on variable vs overall code
                 "alg_description": f"Account {description_text} Rollup",
                 "alg_python": node.name,
                 "alg_formulation": "TODO",
-                "alg_units": "TODO",
+                "alg_units": "million",
                 "variables": ", ".join(ast.unparse(node.args).split(",")), # TODO should also include variables within the function
                 "constants": "TODO", # Needs to have the constants defined in that 
                 "Dependencies": ", ".join(sorted({a.arg for a in args.args}))
             })
+            # Adds account variables to a dictionary for the TEAm-specific output parser to use
+            self.account_variables.update({self.account_iter:", ".join(ast.unparse(node.args).split(","))})
+            # Sorts out some strange named accounts, may adjust to include later
+            if "2" in node.name:
+                # Account entry TODO WIP
+                self.records.append({
+                    "Type": "account",
+                    "ind":self.account_iter,
+                    "code_of_account":description_text.replace("C",""),
+                    "account_description": f"TODO",
+                    "total_cost (M$)": "TODO",
+                    "total_cost": "TODO",
+                    "level": len(description_text.replace("C","")),
+                    "prn": "TODO",
+                    "supaccount":description_text[:-1],
+                    "alg_name": node.name,
+                    "fun_unit": "million",
+                    "variables": ", ".join(ast.unparse(node.args).split(",")), # TODO should also include variables within the function
+                    "Dependencies": ", ".join(sorted({a.arg for a in args.args}))
+                })
+                
         else:
             self.records.append({
                 "Type": "function",
                 "ind":self.func_iter,
                 "alg_name": node.name,
-                "alg_for":"", # v or c based on variable vs overall code
+                "alg_for":"v", # v or c based on variable vs overall code
                 "alg_description": "".join(str(ast.get_docstring(node)).strip().split("\n")[0:1]) or "",
                 "alg_python": node.name,
                 "alg_formulation": "TODO",
@@ -101,7 +128,7 @@ class CodeAnalyzer(ast.NodeVisitor):
 
 # Run the ast and the analyzer to parse a python script, then write the variables and 
 # Algorithms to a csv in an ACCERT format
-def extract_metadata_to_csv(filepath: str, output_var_csv: str, output_func_csv:str):
+def extract_metadata_to_csv(filepath: str, output_var_csv="vars.csv", output_func_csv="func.csv", output_acc_csv="accounts.csv"):
     with open(filepath, "r") as f:
         tree = ast.parse(f.read(), filename=filepath)
 
@@ -114,7 +141,7 @@ def extract_metadata_to_csv(filepath: str, output_var_csv: str, output_func_csv:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
         for record in analyzer.records:
-            if record["Type"] is not ("function"):
+            if record["Type"] != ("function") and record["Type"] != "account":
                 writer.writerow(record)
 
     fieldnames = ["ind", "alg_name", "alg_description", "alg_python", "alg_formulation", "alg_units", "variables", "constants"]
@@ -122,10 +149,18 @@ def extract_metadata_to_csv(filepath: str, output_var_csv: str, output_func_csv:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
         for record in analyzer.records:
-            if record["Type"] is ("function"):
+            if record["Type"] == ("function"):
                 # print(record)
                 writer.writerow(record)
 
+    fieldnames = ['ind', 'code_of_account', 'account_description', 'total_cost (M$)', 'total_cost ($)', 'level', 'prn', 'supaccount', 'alg_name', 'fun_unit', 'variables', 'algno']
+    with open(output_acc_csv, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        for record in analyzer.records:
+            if record["Type"] == ("account"):
+                # print(record)
+                writer.writerow(record)
 
 # Takes in the txt output from TEAm and creates the formatted 
 # ACCERT first page (accounts) 
@@ -150,8 +185,12 @@ def formatAccounts(TEAm_outputs_path):
 
     ### GENERAL FORMATTING VARIABLES ### 
 
-    # Account numbers
+    # Useful variables for internal math
+    account2_iter=0
+    totalCost=0
 
+    # Account numbers
+    
     for account_iter in range(coaNumRows):
         # Adds the ind numbers in
         formattedCopy[account_iter+1][0] = account_iter+1
@@ -177,9 +216,10 @@ def formatAccounts(TEAm_outputs_path):
 
         # Level = level
         formattedCopy[account_iter+1][5] = f"{dataLoadTxt['Level'].values[account_iter]}"
+        if formattedCopy[account_iter+1][5] == "0":
+            totalCost=totalCost+float(formattedCopy[account_iter+1][3])
 
-        # prn TODO ASK
-        formattedCopy[account_iter+1][6] = "TODO"
+        # PRN handled separately
 
         # supaccount, take one off the original
         formattedTemp = f"{dataLoadTxt['Account Number'].values[account_iter]}".replace('.','')
@@ -193,29 +233,31 @@ def formatAccounts(TEAm_outputs_path):
         # units (all millions)
         formattedCopy[account_iter+1][9]="million"
 
-        # variables TODO
+        # variables TODO WIP
         # variables in all of the subaccounts
+        if dataLoadTxt['Account Number'].values[account_iter][0] == 2:
+            if CodeAnalyzer.account_variables:
+                # This currently relies on simple string check to make sure it is part of the direct cost super account
+                formattedCopy[account_iter+1][10]=CodeAnalyzer.account_variables[account2_iter+1]
+            account2_iter=account2_iter+1
+    
+    # Special loop for prn
+    for account_iter in range(coaNumRows):
+        formattedCopy[account_iter+1][6] = str(float(formattedCopy[account_iter+1][3])/totalCost)
 
     # print(formattedCopy)
+    with open('accounts_fromTEAm.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerows(formattedCopy)
     return formattedCopy
-
-
-# Takes in the core python script and outputs the variables
-def formatVariables(core_python_path):
-
-    # TODO implement
-    print("not implemented")
-
-
-# Takes in the core python script and outputs the functions
-def formatFunctions(core_python_path):
-    # TODO implement
-    print("not implemented")
 
 
 ### MAIN ###
 
-formattedAccountsInit = formatAccounts(TEAm_outputs_path=sys.argv[1])
+# Creates general variables, functions, and TODO accounts csvs based on a python script
 extract_metadata_to_csv(filepath="core_editedForNeeds.py", output_var_csv="vars.csv", output_func_csv="func.csv")
 
-print(formattedAccountsInit)
+# Creates the accounts based on the outputs of the TEAm code
+formattedAccountsInit = formatAccounts(TEAm_outputs_path=sys.argv[1])
+
+# print(formattedAccountsInit)
