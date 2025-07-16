@@ -1638,212 +1638,212 @@ def generate_inputs(
     
     """
                 
-    if load:
+    """ if load:
         with open(filename) as file:
             inputs = json.load(file)
             
-    else:
+    else: """
         
-        # Fusion Power in Central Cell    
-        P_f_CC = P_f - 2 * P_f_EP
-        
-        # Central Cell Length
-        L_CC = P_f_CC/P_f_L
-        
-        # Central Field Coil Spacing
-        L_CF = 1.0
+    # Fusion Power in Central Cell    
+    P_f_CC = P_f - 2 * P_f_EP
     
-        # Overall Device Length
-        L = L_CC + 2 * L_EP + 2 * L_EC
+    # Central Cell Length
+    L_CC = P_f_CC/P_f_L
+    
+    # Central Field Coil Spacing
+    L_CF = 1.0
+
+    # Overall Device Length
+    L = L_CC + 2 * L_EP + 2 * L_EC
+    
+    # Vacuum Volume - Not precise, but also not important
+    # Should be updated
+    V_vac = L * np.pi * a_EC**2
+
+
+    # Power Balance
+    P_alpha = P_f * E_alpha / E_DT  # MW, alpha power
+    P_n = P_f - P_alpha # MW, neutron power
         
-        # Vacuum Volume - Not precise, but also not important
-        # Should be updated
-        V_vac = L * np.pi * a_EC**2
+    # Input electrical power
+    P_ine = P_NBI/eta_NBI + P_ICRH/eta_ICRH + P_ECH/eta_ECH
+
+    # Balance of Plant
+    P_pump = f_pump * M_n * P_n
+    P_sub_cont = f_sub * P_f
+    P_cryo = f_cryo * P_f
+    P_other = P_pump + P_sub_cont + P_cryo
+
+    # Total heating input power applied to plasma
+    P_in = P_NBI + P_ICRH + P_ECH
+
+    # Heat in blanket including neutron multiplication
+    # P_thermal_only = M_n * P_n
     
+    # Thermal power
+    # No P_in term as that goes to DEC
+    P_th = M_n * P_n +  eta_pump * P_pump 
     
+    # Thermal electric power
+    P_the = eta_th * P_th
+    
+    # DEC receives all charged particle exhaust, so is the sum of 
+    # both the input power and alpha power
+    P_DEC = P_in + P_alpha
+    
+    # DEC electrical power
+    P_DECe = eta_DEC * P_DEC
+    
+    # Gross electrical power
+    # Differs for application
+    if application.lower()=='electricity':
+        # Electrical application uses thermal power to create electricity
+        P_egross = P_DECe + P_the
+    elif application.lower()=='heat':
+        # Heat application only uses DEC to create electricity
+        P_egross = P_DECe
+
+    # Net electrical power
+    P_enet = P_egross - (P_ine + P_other)
+        
+    f_aux =  P_aux / P_egross
+    # P_loss = P_th - P_the - P_DECe
+    # P_sub = f_sub * P_the
+    
+    # Scientific Q
+    Q_sci = P_f / P_in
+    
+    # Engineering Q
+    Q_eng = P_egross / (P_ine + P_other)
+
+    # Recirculating power
+    f_refrac = 1 / Q_eng
+    if run_name==None:
+        run_name = '{:.1f}-MW'.format(float(P_f))
+    
+
+    cost_file_full = pkg_resources.resource_filename('TEAm_public', cost_file)
+            
+    inputs = {
+        
+        # Application (heat or electricity)
+        'Application':application,
+        'Method':method,
+        
         # Power Balance
-        P_alpha = P_f * E_alpha / E_DT  # MW, alpha power
-        P_n = P_f - P_alpha # MW, neutron power
-            
-        # Input electrical power
-        P_ine = P_NBI/eta_NBI + P_ICRH/eta_ICRH + P_ECH/eta_ECH
-
-        # Balance of Plant
-        P_pump = f_pump * M_n * P_n
-        P_sub_cont = f_sub * P_f
-        P_cryo = f_cryo * P_f
-        P_other = P_pump + P_sub_cont + P_cryo
-
-        # Total heating input power applied to plasma
-        P_in = P_NBI + P_ICRH + P_ECH
-
-        # Heat in blanket including neutron multiplication
-        # P_thermal_only = M_n * P_n
+        'Fusion Power': P_f, 
+        'Alpha Power': P_alpha, 
+        'Neutron Power': P_n, 
+        'Neutron Energy Multiplication': M_n, 
+        # 'Thermal Only Power': P_thermal_only,
+        'Thermal Power': P_th, 
+        'Thermal Conversion Efficiency': eta_th, 
         
-        # Thermal power
-        # No P_in term as that goes to DEC
-        P_th = M_n * P_n +  eta_pump * P_pump 
+        # DEC
+        'DEC Efficiency': eta_DEC, 
+        'DEC Electrical Power': P_DECe, 
+        'DEC Input Power': P_DEC, 
         
-        # Thermal electric power
-        P_the = eta_th * P_th
+        # Balance
+        'Thermal Electric Power': P_the, 
+        'Gross Electric Power': P_egross, 
+        'Net Electric Power': P_enet,
         
-        # DEC receives all charged particle exhaust, so is the sum of 
-        # both the input power and alpha power
-        P_DEC = P_in + P_alpha
+        # Other Power
+        'Other Power': P_other,
+        'Pumping Power Fraction': f_pump, 
+        'Pumping Power': P_pump, 
+        'Subsystem and Control Power': P_sub_cont, 
+        'Auxiliary Power Fraction': f_aux, 
+        'Auxiliary Power': P_aux, 
         
-        # DEC electrical power
-        P_DECe = eta_DEC * P_DEC
+        # Input Power
+        'Applied Heating Power': P_in, 
+        'Applied Heating Power Electrical Use': P_ine,
+        'NBI Power': P_NBI,
+        'ICRH Power': P_ICRH,
+        'ECH Power': P_ECH,
+        'NBI Electrical Efficiency': eta_NBI,
+        'ICRH Electrical Efficiency': eta_ICRH,
+        'ECH Electrical Efficiency': eta_ECH,
         
-        # Gross electrical power
-        # Differs for application
-        if application.lower()=='electricity':
-            # Electrical application uses thermal power to create electricity
-            P_egross = P_DECe + P_the
-        elif application.lower()=='heat':
-            # Heat application only uses DEC to create electricity
-            P_egross = P_DECe
+        # Q
+        'Scientific Q': Q_sci, 
+        'Engineering Q': Q_eng, 
+        'Recirculating Power Fraction': f_refrac, 
 
-        # Net electrical power
-        P_enet = P_egross - (P_ine + P_other)
-            
-        f_aux =  P_aux / P_egross
-        # P_loss = P_th - P_the - P_DECe
-        # P_sub = f_sub * P_the
+        # Don't use this - it is probably not implemented well here
+        'Number of Modules': N_module,
         
-        # Scientific Q
-        Q_sci = P_f / P_in
+        # Time Intervals
+        'Construction Time':construction_time,
+        'Lifetime':lifetime,
+        'Replacement Time':replacement,
+        'Level of Safety Assurance':LSA,
         
-        # Engineering Q
-        Q_eng = P_egross / (P_ine + P_other)
-
-        # Recirculating power
-        f_refrac = 1 / Q_eng
-        if run_name==None:
-            run_name = '{:.1f}-MW'.format(float(P_f))
+        # Geometry
+        'Overall Length':L,
+        'Central Cell Length':L_CC,
+        'End Plug Length':L_EP,
+        'Expander Length':L_EC,
+        'Vacuum Volume':V_vac,
         
-
-        cost_file_full = pkg_resources.resource_filename('TEAm_public', cost_file)
-               
-        inputs = {
-            
-            # Application (heat or electricity)
-            'Application':application,
-            'Method':method,
-            
-            # Power Balance
-            'Fusion Power': P_f, 
-            'Alpha Power': P_alpha, 
-            'Neutron Power': P_n, 
-            'Neutron Energy Multiplication': M_n, 
-            # 'Thermal Only Power': P_thermal_only,
-            'Thermal Power': P_th, 
-            'Thermal Conversion Efficiency': eta_th, 
-            
-            # DEC
-            'DEC Efficiency': eta_DEC, 
-            'DEC Electrical Power': P_DECe, 
-            'DEC Input Power': P_DEC, 
-            
-            # Balance
-            'Thermal Electric Power': P_the, 
-            'Gross Electric Power': P_egross, 
-            'Net Electric Power': P_enet,
-            
-            # Other Power
-            'Other Power': P_other,
-            'Pumping Power Fraction': f_pump, 
-            'Pumping Power': P_pump, 
-            'Subsystem and Control Power': P_sub_cont, 
-            'Auxiliary Power Fraction': f_aux, 
-            'Auxiliary Power': P_aux, 
-            
-            # Input Power
-            'Applied Heating Power': P_in, 
-            'Applied Heating Power Electrical Use': P_ine,
-            'NBI Power': P_NBI,
-            'ICRH Power': P_ICRH,
-            'ECH Power': P_ECH,
-            'NBI Electrical Efficiency': eta_NBI,
-            'ICRH Electrical Efficiency': eta_ICRH,
-            'ECH Electrical Efficiency': eta_ECH,
-            
-            # Q
-            'Scientific Q': Q_sci, 
-            'Engineering Q': Q_eng, 
-            'Recirculating Power Fraction': f_refrac, 
-
-            # Don't use this - it is probably not implemented well here
-            'Number of Modules': N_module,
-            
-            # Time Intervals
-            'Construction Time':construction_time,
-            'Lifetime':lifetime,
-            'Replacement Time':replacement,
-            'Level of Safety Assurance':LSA,
-            
-            # Geometry
-            'Overall Length':L,
-            'Central Cell Length':L_CC,
-            'End Plug Length':L_EP,
-            'Expander Length':L_EC,
-            'Vacuum Volume':V_vac,
-            
-            # Number of Magnets
-            'HF Magnet Number':4, # Always 4 for a tandem
-            'LF Magnet Number':2, # Set to what you need!
-            'CF Magnet Spacing':L_CF,
-            'CF Magnet Number':L_CC/L_CF, # Calcuated
-            
-            'HF Magnet Length':hf_magnet_length,
-            'HF Magnet Shielding Thickness':hf_magnet_shielding_thickness,
-            
-            'End Plug Plasma Radius':a_EP,
-            
-            'Expander Cell Length':L_EC,
-            'Expander Cell Radius':a_EC,
-            'Expander Cell Vessel Thickness':expander_cell_vessel_thickness,
-            'Expander Cell Vessel Material':expander_cell_vessel_material,
-            
-            'Central Cell Plasma Radius':a_CC,
-            'Central Cell Vacuum Gap':vacuum_gap_CC,
-            'First Wall Material':first_wall_material,
-            'First Wall Thickness':first_wall_thickness,
-            'Vacuum Vessel Material':vacuum_vessel_material,
-            'Vacuum Vessel Thickness':vacuum_vessel_thickness,
-            'Multiplier Material':multiplier_material,
-            'Multiplier Thicnkess':multiplier_thickness,
-            'Blanket Coolant Material':blanket_coolant_material,
-            'Blanket Thickness':blanket_thickness,
-            'Blanket Coolant Fraction':blanket_coolant_fraction,
-            'Blanket Structural Material':blanket_structural_material,
-            'Blanket Structrual Fraction':blanket_structural_fraction,
-            'Outer Vessel Thickness':outer_vessel_thickness,
-    
-            # Economic Factors
-            'Availability':availability,
-            'Discount':discount,
-            'NOAK': NOAK,
-            'Unit Number':n_unit,
-            # 'Cost File':cost_file,
-            'Cost File':cost_file_full,
-            'Licensing':include_licensing,
-            'Tax':include_tax,
-            'Decommissioning':include_decommissioning,
-            'Contingency':include_contingency,
-
-            # File Prefix
-            'Run Name':run_name
-            
-            }
+        # Number of Magnets
+        'HF Magnet Number':4, # Always 4 for a tandem
+        'LF Magnet Number':2, # Set to what you need!
+        'CF Magnet Spacing':L_CF,
+        'CF Magnet Number':L_CC/L_CF, # Calcuated
         
-        if save:
-            # import csv
-            
-            filename = 'inputs-'+inputs['Run Name']+'.json'    
+        'HF Magnet Length':hf_magnet_length,
+        'HF Magnet Shielding Thickness':hf_magnet_shielding_thickness,
+        
+        'End Plug Plasma Radius':a_EP,
+        
+        'Expander Cell Length':L_EC,
+        'Expander Cell Radius':a_EC,
+        'Expander Cell Vessel Thickness':expander_cell_vessel_thickness,
+        'Expander Cell Vessel Material':expander_cell_vessel_material,
+        
+        'Central Cell Plasma Radius':a_CC,
+        'Central Cell Vacuum Gap':vacuum_gap_CC,
+        'First Wall Material':first_wall_material,
+        'First Wall Thickness':first_wall_thickness,
+        'Vacuum Vessel Material':vacuum_vessel_material,
+        'Vacuum Vessel Thickness':vacuum_vessel_thickness,
+        'Multiplier Material':multiplier_material,
+        'Multiplier Thicnkess':multiplier_thickness,
+        'Blanket Coolant Material':blanket_coolant_material,
+        'Blanket Thickness':blanket_thickness,
+        'Blanket Coolant Fraction':blanket_coolant_fraction,
+        'Blanket Structural Material':blanket_structural_material,
+        'Blanket Structrual Fraction':blanket_structural_fraction,
+        'Outer Vessel Thickness':outer_vessel_thickness,
 
-    
-            with open(filename, 'w') as file:
-                json.dump(inputs, file)
+        # Economic Factors
+        'Availability':availability,
+        'Discount':discount,
+        'NOAK': NOAK,
+        'Unit Number':n_unit,
+        # 'Cost File':cost_file,
+        'Cost File':cost_file_full,
+        'Licensing':include_licensing,
+        'Tax':include_tax,
+        'Decommissioning':include_decommissioning,
+        'Contingency':include_contingency,
+
+        # File Prefix
+        'Run Name':run_name
+        
+        }
+    """ 
+    if save:
+        # import csv
+        
+        filename = 'inputs-'+inputs['Run Name']+'.json'    
+
+
+        with open(filename, 'w') as file:
+            json.dump(inputs, file)
 
     if verbose:
         
@@ -1852,7 +1852,7 @@ def generate_inputs(
         print('{:35s} {:8s}'.format('Parameter', 'Value'))
         
         for key in inputs:
-            print(format_string.format(key, inputs[key]))
+            print(format_string.format(key, inputs[key])) """
         
     return(inputs)
 
@@ -2334,7 +2334,7 @@ def HF_magnet_shield_cost(inputs, verbose=False):
     cost = cost_data.loc[material]['price'] * cost_data.loc[material]['manufacturing_factor'] * mass
 
 
-    if verbose:
+    """ if verbose:
         print('Central Cell Facing Magnet Volume Calculation')
         print('  Radially Inner Cylinder {:12.2f} m^3'.format(V_radially_inner_cylinder))
         print('  Central Cell Cylinder   {:12.2f} m^3'.format(V_cc_cylinder))
@@ -2359,6 +2359,6 @@ def HF_magnet_shield_cost(inputs, verbose=False):
         print('  Price                   {:12.2f} USD/kg'.format(cost_data.loc[material]['price']))
         print('  Manufacturing Factor    {:12.2f}'.format(cost_data.loc[material]['manufacturing_factor']))
         print('  Cost                    {:12.2f} MUSD'.format(cost/1e6))
-        print()
+        print() """
 
     return(cost)

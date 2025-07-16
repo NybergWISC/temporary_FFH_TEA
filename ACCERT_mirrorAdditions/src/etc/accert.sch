@@ -59,7 +59,7 @@ accert{
             MinOccurs = 1
             MaxOccurs = 1
             ValType = String
-            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
         }
         value{
             MinOccurs = 1
@@ -113,7 +113,7 @@ accert{
                     MinOccurs = 1
                     MaxOccurs = 1
                     ValType = String
-                    ValEnums = [ REF:user_defined_names   million  dollar]
+                    ValEnums = [ REF:user_defined_names  REF:total_cost_unit]
                 }                                
             }
             % there is no cost element in this level
@@ -167,7 +167,7 @@ accert{
                             MinOccurs = 0
                             MaxOccurs = 1
                             ValType = String
-                            ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names]
+                            ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names]
                         }
                         var{
                             Description = "changed variable value"
@@ -180,7 +180,8 @@ accert{
                                 ValType = String
                                 ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names 
                                 REF:heatpipe_var_names
-                                REF:fusion_var_names]
+                                REF:fusion_var_names
+                                REF:stellarator_var_names REF:mirror_var_names]
                             }
                             value{
                                 MinOccurs = 0
@@ -204,7 +205,7 @@ accert{
                                     MinOccurs = 1
                                     MaxOccurs = 1
                                     ValType = String
-                                    ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                                    ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                                 }
                                 var{
                                     Description = "changed variable value"
@@ -215,7 +216,7 @@ accert{
                                         MinOccurs = 1
                                         MaxOccurs = 1
                                         ValType = String
-                                        ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                        ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                                     }
                                     value{
                                         MinOccurs = 1
@@ -240,7 +241,7 @@ accert{
                         MinOccurs = 1
                         MaxOccurs = 1
                         ValType = String
-                        ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                        ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                     }
                     var{
                         Description = "changed variable value"
@@ -250,7 +251,7 @@ accert{
                             MinOccurs = 1
                             MaxOccurs = 1
                             ValType = String
-                            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                         }
                         value{
                             MinOccurs = 0
@@ -273,7 +274,7 @@ accert{
                                 MinOccurs = 1
                                 MaxOccurs = 1
                                 ValType = String
-                                ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                                ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                             }
                             var{
                                 Description = "changed variable value"
@@ -283,7 +284,7 @@ accert{
                                     MinOccurs = 1
                                     MaxOccurs = 1
                                     ValType = String
-                                    ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                    ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                                 }
                                 value{
                                     MinOccurs = 1
@@ -325,7 +326,7 @@ accert{
                             MinOccurs = 1
                             MaxOccurs = 1
                             ValType = String
-                            ValEnums = [ REF:user_defined_names   million  dollar]
+                            ValEnums = [ REF:user_defined_names   REF:total_cost_unit ]
                         }                            
                     }
                     alg{
@@ -333,7 +334,7 @@ accert{
                             MinOccurs = 1
                             MaxOccurs = 1
                             ValType = String
-                            ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                            ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                         }
                         var{
                             Description = "changed variable value"
@@ -343,7 +344,7 @@ accert{
                                 MinOccurs = 1
                                 MaxOccurs = 1
                                 ValType = String
-                                ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                             }
                             value{
                                 MinOccurs = 0
@@ -366,7 +367,7 @@ accert{
                                     MinOccurs = 1
                                     MaxOccurs = 1
                                     ValType = String
-                                    ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                                    ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                                 }
                                 var{
                                     Description = "changed variable value"
@@ -376,7 +377,7 @@ accert{
                                         MinOccurs = 1
                                         MaxOccurs = 1
                                         ValType = String
-                                        ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                        ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                                     }
                                     value{
                                         MinOccurs = 1
@@ -408,7 +409,7 @@ accert{
                                 MinOccurs = 1
                                 MaxOccurs = 1
                                 ValType = String
-                                ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                                ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                             }
                             var{
                                 Description = "changed variable value"
@@ -418,7 +419,7 @@ accert{
                                     MinOccurs = 1
                                     MaxOccurs = 1
                                     ValType = String
-                                    ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                    ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                                 }
                                 value{
                                     MinOccurs = 0
@@ -441,7 +442,7 @@ accert{
                                         MinOccurs = 1
                                         MaxOccurs = 1
                                         ValType = String
-                                        ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names ]
+                                        ValEnums = [ REF:user_defined_names  REF:alg_names REF:fusion_alg_names REF:mirror_alg_names ]
                                     }
                                     var{
                                         Description = "changed variable value"
@@ -451,7 +452,7 @@ accert{
                                             MinOccurs = 1
                                             MaxOccurs = 1
                                             ValType = String
-                                            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names]
+                                            ValEnums =[ REF:user_defined_names REF:pwr_var_names REF:abr_var_names REF:containment_var_names REF:heatpipe_var_names REF:fusion_var_names REF:stellarator_var_names REF:mirror_var_names]
                                         }
                                         value{
                                             MinOccurs = 1
@@ -495,7 +496,7 @@ accert{
 }
 
 EndOfSchema{}
-ref_models = [ "PWR12-BE" "ABR1000" "LFR", "heatpipe","fusion"]
+ref_models = ["PWR12-BE" "ABR1000" "LFR" "heatpipe" "fusion" "stellarator" "mirror"]
 power_type = ["Thermal" "Electric"] 
 power_unit = ["W" "kWW" "MW"]
 total_cost_unit = ["million" "dollar"]
@@ -540,7 +541,11 @@ fusion_L3COA_names = ['2141' '2142' '2171' '2172' '2173' '2174' '2211' '2212' '2
 '2215' '2221' '2222' '2223' '2231' '2232' '2233' '2241' '2242' '2243' '2244' '2245' '2246' 
 '2251' '2252' '2253' '2261' '2262' '2263' '2271' '2272' '2273' '2274' 'new']
 
-l3GNCOA_names = ['213.1' '213.2' '213.3' '213.4' '214.1' '214.2' '214.3' '214.4' '214.5' '214.6' '214.7' '215.1' '215.2' '215.3' '215.4' '215.5' '216.1' '216.2' '216.3' '216.4' '217.1' '217.2' '217.3' '217.4' '221.1' '221.2' '221.3' '222.1' '222.2' '222.3' '222.4' '222.5' '223.1' '223.2' '223.3' '223.4' '223.5' '225.1' '225.2' '231.1' '231.2' '232.1' '232.2' '232.3' '232.4' '232.5' '232.6' '232.7' '232.8' '232.9' '233.1' '233.2' '331.1' '331.2' '331.3' '331.4' '331.5' '832.1']
+l3GNCOA_names = ['213.1' '213.2' '213.3' '213.4' '214.1' '214.2' '214.3' '214.4' '214.5' '214.6' 
+'214.7' '215.1' '215.2' '215.3' '215.4' '215.5' '216.1' '216.2' '216.3' '216.4' '217.1' '217.2' 
+'217.3' '217.4' '221.1' '221.2' '221.3' '222.1' '222.2' '222.3' '222.4' '222.5' '223.1' '223.2' 
+'223.3' '223.4' '223.5' '225.1' '225.2' '231.1' '231.2' '232.1' '232.2' '232.3' '232.4' '232.5' 
+'232.6' '232.7' '232.8' '232.9' '233.1' '233.2' '331.1' '331.2' '331.3' '331.4' '331.5' '832.1']
 
 l4GNCOA_names = ['221.11' '221.12' '221.13' '221.21' '221.31' '221.32' '221.33']
 
@@ -548,8 +553,16 @@ fusion_l4COA_names = ['22121' '22122' '22123' '22124' '22131' '22132' '22211' '2
 '22213' '22214' '22215' '22221' '22222' '22223' '22224' '22511' '22512' '22513' '22514' 
 '22515' '22521' '22522' '22523' '22524' '22525' '22526' '22527' '22611' '22612' 'new']
 
-unit_names = [squareMeter cubeMeter kW MW W lbs ton kg million 'gpm*feet' '1' m 'm^2' 'm^3' 
-'dollar/m^3' 'dollar/m^2' 'psi' 'psf' 'bar' 'dollar' 'thousand']
+unit_names = [squareMeter cubeMeter kW MW W lbs ton kg million 'gpm*feet' '1' 'm' 'm^2' 'm^3' 
+'dollar/m^3' 'dollar/m^2' 'psi' 'psf' 'bar' 'dollar' 'thousand' 'None' 'N/A' 'kA', 'm3', 'amu', 
+    'kg', 'M$', 'm2', 'years', '$/m', '($/J wall plug)', 'A',
+    'MW', 'm', 'M$/MJ', 'kg/m3', 'kg/m4', 'kg/m5', 'kg/m6', 'kg/m7', 'kg/m8',
+    'kg/m9', 'kg/m10', 'kg/m11', 'kg/m^3', 'K', 'keV', 'C', 'J', 'A/W', 'MJ',
+    'GJ', 'fraction of tritium fused/target', 'reactions/m3/sec', 'W', 'days',
+    'Hz', 'MA-turns', 'A/m2', 'reactions/sec', 'sec', 's', 'M$/m3', '$', '$/W',
+    '$/kVA', '$/kg', '$/A-m', 'M$/vol', '$/10000m3/hr', '$/w', 'M$/year/1200MW',
+    '$/m2', '$/m3', '$/mva', '($/W)', '$/circuit', '$/MJ', '$/channel', '$/target', '$/J', 
+    '$/coil', '$/A', 'kW', 'kV', 'kg/coil']
 
 alg_names = ['sum_multi_accounts' 'sum_multi_weights' 'sum_multi_pumps' 'ptn_account' 
 'unit_weights' 'pump' 'containment' 'MWth_scale' 'unit_volume' 'dev_factor_ref' 'tur_exp_n' 
@@ -567,7 +580,7 @@ alg_names = ['sum_multi_accounts' 'sum_multi_weights' 'sum_multi_pumps' 'ptn_acc
 'Inner_vessel_cost' 'Reactivity_control_system_cost' 'Reflector_cost' 'Shield_cost' 
 'Moderator_cost' 'cooling_heat_pipes_cost' 'heat_exchangers_mat_cost' 
 'heat_exchangers_lab_cost' 'heat_exchangers_fac_cost' 'instrumentation_contorl_cost' 
-'turb_and_elec_sys_cost']
+'turb_and_elec_sys_cost' 'stcalaintmass' 'stcalintercoil_surface' 'stcalclgsmass']
 
 fusion_alg_names = ['acc2' 'acc21' 'acc211' 'acc212' 'acc213' 'acc214' 'acc2141' 'acc2142' 
 'acc215' 'acc216' 'acc217' 'acc2171' 'acc2172' 'acc2173' 'acc2174' 'acc22' 'acc221' 
@@ -771,6 +784,19 @@ containment_var_names = ['CPI' 'Void_fraction' 'liner_fraction' 'Cont_H_tot_m' '
 
 heatpipe_var_names = ['land_surface_area' 'containment_subVolume' 'Containment_hole_volume' 'Turbine_building_surface_area' 'Distance_to_utilities' 'Number_of_shipping_containers' 'Battery_capacity_required' 'primary_outer_vessel_SS_mass' 'primary_inner_vessel_SS_mass' 'B4C_total_neutron_poison_mass_Kg' 'Number_of_control_rod_drums' 'number_of_emergency_control_rods' 'stainless_steel_316_reflector_mass' 'Al2O3_reflector_mass' 'BeO_reflector_mass' 'shield_B4C_mass' 'moderator_ZrH_mass' 'mass_production_cost_reduction_factor' 'number_of_core_cooling_heat_pipes' 'number_of_heat_exchangers' 'heat_exchangers_mass' 'number_of_IO_sensors' 'mwth' 'mwe']
 
-fusion_var_names = ['a' 'acptmax' 'admvol' 'afuel' 'ai' 'aintmass' 'akappa' 'areaoh' 'awpoh' 'b0' 'blmass' 'cconfix' 'cconshpf' 'cconshtf' 'cdirt' 'cdriv0' 'cdriv1' 'cdriv2' 'cdriv3' 'cfind_0' 'cfind_1' 'cfind_2' 'cfind_3' 'cland' 'clgsmass' 'coilmass' 'convol' 'coolmass' 'coolwh' 'cowner' 'cpstcst' 'cpttf' 'crypmw' 'cryvol' 'csi' 'cturbb' 'd_0' 'd_1' 'd_2' 'd_3' 'dcdrv0' 'dcdrv1' 'dcdrv2' 'dcond_0' 'dcond_1' 'dcond_2' 'dcond_3' 'dcond_4' 'dcond_5' 'dcond_6' 'dcond_7' 'dcond_8' 'dcopper' 'dens' 'divcst' 'divsur' 'dlscal' 'drbi' 'dtstor' 'dvrtmass' 'ealphadt' 'echarge' 'echpwr' 'edrive' 'effrfss' 'elevol' 'ensxpfm' 'esbldgm3' 'estotftgj' 'etadrv' 'expel' 'expepe' 'exphts' 'exprb' 'exprf' 'exptpe' 'faccd' 'faccdfix' 'fachtmw' 'fburn' 'fcap0' 'fcdfuel' 'fcontng' 'fcsht' 'fcuohsu' 'fcupfsu' 'fkind' 'fncmass' 'fndt' 'ftrit' 'fusionrate' 'fwallcst' 'fwarea' 'fwmass' 'fwmatm' 'gain' 'gsmass' 'hccl' 'hcwt' 'helpow' 'hrbi' 'i_tf_sc_mat' 'i_tf_sup' 'iblanket' 'iefrf' 'ife' 'ifedrv' 'ifueltyp' 'imax' 'iohcl' 'ipfres' 'ireactor' 'istore' 'isumatoh' 'isumatpf' 'itart' 'l1' 'lpulse' 'lsa' 'ltot' 'mbvfac' 'mcdriv' 'n_tf' 'n_tf_turn' 'nohc' 'nphx' 'ntype' 'nvduct' 'oh_steel_frac' 'pacpmw' 'palpnb' 'peakmva' 'pfbldgm3' 'pfckts' 'pfmass' 'pfwdiv' 'pfwndl' 'pgrossmw' 'pheat' 'pibv' 'pinjht' 'pinjwp' 'plascur' 'plhybd' 'pnbitot' 'pnetelmw' 'pnucblkt' 'pnucshld' 'powfmw' 'pthermmw' 'r0' 'rbrt' 'rbvfac' 'rbvol' 'rbwt' 'reprat' 'ric_0' 'ric_1' 'ric_2' 'ric_3' 'ric_4' 'ric_5' 'ric_6' 'rjconpf_0' 'rjconpf_1' 'rjconpf_2' 'rjconpf_3' 'rjconpf_4' 'rjconpf_5' 'rjconpf_6' 'rjconpf_7' 'rjconpf_8' 'rjconpf_9' 'rjconpf_10' 'rjconpf_11' 'rjconpf_12' 'rjconpf_13' 'rjconpf_14' 'rjconpf_15' 'rjconpf_16' 'rjconpf_17' 'rjconpf_18' 'rjconpf_19' 'rjconpf_20' 'rjconpf_21' 'rpf_0' 'rpf_1' 'rpf_2' 'rpf_3' 'rpf_4' 'rpf_5' 'rpf_6' 'shmatm' 'spfbusl' 'srcktpm' 'stcl' 'tdown' 'tdspmw' 'tf_h_width ' 'tfacmw' 'tfbusl' 'tfbusmas' 'tfcbv' 'tfckw' 'tfcmw' 'tfhmax' 'tfleng' 'tfmass' 'tlvpmw' 'tmpcry' 'trcl' 'trithtmw' 'triv' 'turns_0' 'turns_1' 'turns_2' 'turns_3' 'turns_4' 'turns_5' 'turns_6' 'twopi' 'ucad' 'ucaf' 'ucahts' 'ucap' 'ucblbe' 'ucblbreed' 'ucblli' 'ucblli2o' 'ucbllipb' 'ucblss' 'ucblvd' 'ucbpmp' 'ucbus' 'uccarb' 'uccase' 'ucco' 'ucconc' 'uccpcl1' 'uccpclb' 'uccpmp' 'uccr' 'uccry' 'uccryo' 'uccu' 'ucdgen' 'ucdiv' 'ucdtc' 'ucduct' 'ucech' 'ucel' 'ucf1' 'ucfnc' 'ucfpr' 'ucfwa' 'ucfwps' 'ucfws' 'ucgss' 'uchrs' 'uchts_0' 'uchts_1' 'uciac' 'ucich' 'ucint' 'uclh' 'uclv' 'ucmb' 'ucme' 'ucmisc' 'ucnbi' 'ucnbv' 'ucpens' 'ucpfb' 'ucpfbk' 'ucpfbs' 'ucpfcb' 'ucpfdr1' 'ucpfic' 'ucpfps' 'ucphx' 'ucpp' 'ucrb' 'ucsc_0' 'ucsc_1' 'ucsc_2' 'ucsc_3' 'ucsc_4' 'ucsc_5' 'ucsc_6' 'ucsc_7' 'ucsc_8' 'ucsh' 'ucshld' 'ucswyd' 'uctfbr' 'uctfbus' 'uctfdr' 'uctfgr' 'uctfic' 'uctfps' 'uctfsw' 'uctpmp' 'uctr' 'ucturb_0' 'ucturb_1' 'ucvalv' 'ucvdsh' 'ucviac' 'ucwindpf' 'ucwindtf' 'umass' 'vacdshm' 'vachtmw' 'vcdimax' 'vf' 'vfohc' 'vol' 'volrci' 'vpfskv' 'vpumpn' 'vtfskv' 'vvmass' 'wgt2' 'whtblbe' 'whtblbreed' 'whtblli' 'whtblss' 'whtblvd' 'whtcas' 'whtconcu' 'whtconsc' 'whtcp' 'whtpfs' 'whtshld' 'whttflgs' 'wpenshld' 'wrbi' 'wsvfac' 'wsvol' 'wtblli2o' 'wtbllipb' 'rmbvol' 'ucws' 'shovol' 'expcry']
+fusion_var_names = ['a' 'acptmax' 'admvol' 'afuel' 'ai' 'aintmass' 'akappa' 'areaoh' 'awpoh' 'b0' 'blmass' 'cconfix' 'cconshpf' 'cconshtf' 'cdirt' 'cdriv0' 'cdriv1' 'cdriv2' 'cdriv3' 'cfind_0' 'cfind_1' 'cfind_2' 'cfind_3' 'cland' 'clgsmass' 'coilmass' 'convol' 'coolmass' 'coolwh' 'cowner' 'cpstcst' 'cpttf' 'crypmw' 'cryvol' 'csi' 'cturbb' 'd_0' 'd_1' 'd_2' 'd_3' 'dcdrv0' 'dcdrv1' 'dcdrv2' 'dcond_0' 'dcond_1' 'dcond_2' 'dcond_3' 'dcond_4' 'dcond_5' 'dcond_6' 'dcond_7' 'dcond_8' 'dcopper' 'dens' 'divcst' 'divsur' 'dlscal' 'drbi' 'dtstor' 'dvrtmass' 'ealphadt' 'echarge' 'echpwr' 'edrive' 'effrfss' 'elevol' 'ensxpfm' 'esbldgm3' 'estotftgj' 'etadrv' 'expel' 'expepe' 'exphts' 'exprb' 'exprf' 'exptpe' 'faccd' 'faccdfix' 'fachtmw' 'fburn' 'fcap0' 'fcdfuel' 'fcontng' 'fcsht' 'fcuohsu' 'fcupfsu' 'fkind' 'fncmass' 'fndt' 'ftrit' 'fusionrate' 'fwallcst' 'fwarea' 'fwmass' 'fwmatm' 'gain' 'gsmass' 'hccl' 'hcwt' 'helpow' 'hrbi' 'i_tf_sc_mat' 'i_tf_sup' 'iblanket' 'iefrf' 'ife' 'ifedrv' 'ifueltyp' 'imax' 'iohcl' 'ipfres' 'ireactor' 'istore' 'isumatoh' 'isumatpf' 'itart' 'l1' 'lpulse' 'lsa' 'ltot' 'mbvfac' 'mcdriv' 'n_tf' 'n_tf_turn' 'nohc' 'nphx' 'ntype' 'nvduct' 'oh_steel_frac' 'pacpmw' 'palpnb' 'peakmva' 'pfbldgm3' 'pfckts' 'pfmass' 'pfwdiv' 'pfwndl' 'pgrossmw' 'pheat' 'pibv' 'pinjht' 'pinjwp' 'plascur' 'plhybd' 'pnbitot' 'pnetelmw' 'pnucblkt' 'pnucshld' 'powfmw' 'pthermmw' 'r0' 'rbrt' 'rbvfac' 'rbvol' 'rbwt' 'reprat' 'ric_0' 'ric_1' 'ric_2' 'ric_3' 'ric_4' 'ric_5' 'ric_6' 'rjconpf_0' 'rjconpf_1' 'rjconpf_2' 'rjconpf_3' 'rjconpf_4' 'rjconpf_5' 'rjconpf_6' 'rjconpf_7' 'rjconpf_8' 'rjconpf_9' 'rjconpf_10' 'rjconpf_11' 'rjconpf_12' 'rjconpf_13' 'rjconpf_14' 'rjconpf_15' 'rjconpf_16' 'rjconpf_17' 'rjconpf_18' 'rjconpf_19' 'rjconpf_20' 'rjconpf_21' 'rpf_0' 'rpf_1' 'rpf_2' 'rpf_3' 'rpf_4' 'rpf_5' 'rpf_6' 'shmatm' 'spfbusl' 'srcktpm' 'stcl' 'tdown' 'tdspmw' 'tf_h_width ' 'tfacmw' 'tfbusl' 'tfbusmas' 'tfcbv' 'tfckw' 'tfcmw' 'tfhmax' 'tfleng' 'tfmass' 'tlvpmw' 'tmpcry' 'trcl' 'trithtmw' 'triv' 'turns_0' 'turns_1' 'turns_2' 'turns_3' 'turns_4' 'turns_5' 'turns_6' 'twopi' 'ucad' 'ucaf' 'ucahts' 'ucap' 'ucblbe' 'ucblbreed' 'ucblli' 'ucblli2o' 'ucbllipb' 'ucblss' 'ucblvd' 'ucbpmp' 'ucbus' 'uccarb' 'uccase' 'ucco' 'ucconc' 'uccpcl1' 'uccpclb' 'uccpmp' 'uccr' 'uccry' 'uccryo' 'uccu' 'ucdgen' 'ucdiv' 'ucdtc' 'ucduct' 'ucech' 'ucel' 'ucf1' 'ucfnc' 'ucfpr' 'ucfwa' 'ucfwps' 'uche3' 'ucfws' 'ucgss' 'uchrs' 'uchts_0' 'uchts_1' 'uciac' 'ucich' 'ucint' 'uclh' 'uclv' 'ucmb' 'ucme' 'ucmisc' 'ucnbi' 'ucnbv' 'ucpens' 'ucpfb' 'ucpfbk' 'ucpfbs' 'ucpfcb' 'ucpfdr1' 'ucpfic' 'ucpfps' 'ucphx' 'ucpp' 'ucrb' 'ucsc_0' 'ucsc_1' 'ucsc_2' 'ucsc_3' 'ucsc_4' 'ucsc_5' 'ucsc_6' 'ucsc_7' 'ucsc_8' 'ucsh' 'ucshld' 'ucswyd' 'uctfbr' 'uctfbus' 'uctfdr' 'uctfgr' 'uctfic' 'uctfps' 'uctfsw' 'uctpmp' 'uctr' 'ucturb_0' 'ucturb_1' 'ucvalv' 'ucvdsh' 'ucviac' 'ucwindpf' 'ucwindtf' 'umass' 'vacdshm' 'vachtmw' 'vcdimax' 'vf' 'vfohc' 'vol' 'volrci' 'vpfskv' 'vpumpn' 'vtfskv' 'vvmass' 'wgt2' 'whtblbe' 'whtblbreed' 'whtblli' 'whtblss' 'whtblvd' 'whtcas' 'whtconcu' 'whtconsc' 'whtcp' 'whtpfs' 'whtshld' 'whttflgs' 'wpenshld' 'wrbi' 'wsvfac' 'wsvol' 'wtblli2o' 'wtbllipb' 'rmbvol' 'ucws' 'shovol' 'expcry']
 
-user_defined_names = [ ]
+stellarator_var_names = ['st_f_b' 'denstl' 'intercoil_surface' 'stella_config_coilsurface' 'st_f_r' 'tftort' 'stella_config_coillength' 'st_f_n']
+
+mirror_var_names = ['E_DT' 'E_alpha' 'E_n' 'm_T' 'm_D' 'm_6Li' 'Wh_to_BTU' 'indentation' 'indented_name' 'inputs' 'cost_data' 'L_magnet_to_magnet' 'L_cylinder' 'expander_cell_cost_result' 'end_plug_cylindrical_part' 'end_plug_cylindrical_part_cost' 'central_cell_cylindrical_part' 'central_cell_cylindrical_part_cost' 'total_cost' 'cost_factor' 'cost_pump' 'vpump_cap' 'no_vpumps' 'axis_t' 'axis_ir' 'lr' 'constructionworker' 'C_22_1_11_in' 'C_22_1_11_1_in' 'C_22_1_11_2_in' 'C_22_1_11_3_in' 'C_22_1_11_4_in' 'C_22_1_11_5_in' 'C_22_1_11_6_in' 'C_22_1_11_7_in' 'C_22_1_11_8_in' 'C_22_1_11_9_in' 'C_22_1_11_10_in' 'C220111' 'inflation' 'C2205010ITER' 'C2205020ITER' 'C2205030ITER' 'C2205040ITER' 'C2205050ITER' 'C2205060ITER' 'lcredit' 'ltoak' 'C220501' 'C220502' 'C220503' 'C220504' 'C220505' 'C220506' 'C220500' 'f_cr' 'f_6Li_natural' 'rho_6Li' 'rho_7Li' 'T_K' 'rho_PbLi' 'P_6Li075' 'P_6Li90' 'f' 'Cf' 'f_interp' 'f_Li' 'f_Pb' 'P_Li' 'P_PbLi' 'P_f_CC' 'L_CC' 'L_CF' 'L' 'V_vac' 'P_alpha' 'P_n' 'P_ine' 'P_pump' 'P_sub_cont' 'P_cryo' 'P_other' 'P_in' 'P_th' 'P_the' 'P_DEC' 'P_DECe' 'P_egross' 'P_enet' 'f_aux' 'Q_sci' 'Q_eng' 'f_refrac' 'run_name' 'cost_file_full' 'new_data' 'r_in' 'r_out' 'radial_build' 'filename' 'T' 'material' 'f_6Li' 'radius' 'thickness' 'vv_material' 'V_end_cap' 'M_end_cap' 'C_end_cap' 'total' 'cost' 'a_M' 'a_CC' 'a_0' 'length' 'r_gap' 'r_vv' 'r_magnet' 'r_cryostat' 'f_vol' 'V_radially_inner_cylinder' 'length_cc_cylinder' 'r_in_cc' 'r_out_cc' 'V_cc_cylinder' 'V_cc_triangle' 'length_ep_cylinder' 'r_in_ep' 'r_out_ep' 'V_ep_cylinder' 'V_ep_triangle' 'V_total_cc_facing' 'V_total_ec_facing' 'V_total' 'mass']
+
+mirror_alg_names = ['add_account' 'generate_report' 'learning_credit' 'Account_C20' 'Account_C21' 'Account_C21_1' 'Account_C21_2' 'Account_C21_3' 'Account_C21_4' 'Account_C21_5' 'Account_C21_6' 'Account_C21_7' 'Account_C21_8' 'Account_C21_9' 'Account_C21_10' 'Account_C21_11' 'Account_C21_12' 'Account_C21_13' 'Account_C21_14' 'Account_C21_15' 'Account_C21_16' 'Account_C21_17' 'Account_C22' 'Account_C22_1' 'Account_C22_1_1' 'Account_C22_1_2' 'Account_C22_1_3' 'Account_C22_1_3_1' 'Account_C22_1_3_2' 'Account_C22_1_3_3' 'Account_C22_1_4' 'Account_C22_1_4_1' 'Account_C22_1_4_2' 'Account_C22_1_4_3' 'Account_C22_1_5' 'Account_C22_1_6' 'Account_C22_1_6_2' 'Account_C22_1_6_3' 'Account_C22_1_6_4' 'Account_C22_1_7' 'Account_C22_1_8' 'Account_C22_1_9' 'Account_C22_1_11' 'Account_C22_2' 'Account_C22_2_1' 'Account_C22_2_2' 'Account_C22_2_3' 'Account_C22_3' 'Account_C22_4' 'Account_C22_5' 'Account_C22_6' 'Account_C22_7' 'Account_C23' 'Account_C24' 'Account_C25' 'Account_C26' 'Account_C27' 'Account_C28' 'Account_C29' 'Account_OCC' 'Account_TCC' 'Account_C90' 'PbLi_density' 'Li_price' 'PbLi_price' 'V_cylindrical_shell' 'V_inverse_triangular_washer' 'generate_inputs' 'create_radial_build' 'add_new_layer' 'add_fractional_layer' 'build_central_cell' 'central_cell_cost' 'central_cell' 'expander_cell_cost' 'HF_magnet_cost' 'LF_magnet_cost' 'CF_magnet_cost' 'HF_magnet_shield_cost']
+
+mirror_l0COA_names = ['TCC' 'O&M' 'Fuel' '2' '4' '5' '6' 'OCC' '1' '3']
+mirror_l1COA_names = ['58' '63' '28' '69' '23' '24' '25' '26' '27' '61' '81' '31' '33' '34' '35' '36' '37' '38' '39' '51' '52' '53' '54' '55' '29' '32' '62' '59' '19' '17' '16' '22' '21' '14' '13' '12' '11' '15']
+mirror_l2COA_names = ['21.1' '21.1' '21.2' '21.3' '21.4' '21.5' '21.6' '21.7' '21.8' '21.9' '21.11' '21.12' '21.13' '21.14' '21.15' '22.7' '22.6' '22.5' '22.4' '22.3' '22.2' '22.1' '21.16' '21.17']
+mirror_l3COA_names = ['22.1.2' '22.1.1' '22.1.5' '22.1.9' '22.1.7' '22.1.8' '22.1.3' '22.1.11' '22.1.6' '22.1.4']
+mirror_l4COA_names = ['22.1.6.4' '22.1.6.2' '22.1.4.3' '22.1.4.2' '22.1.4.1' '22.1.3.3' '22.1.3.2' '22.1.3.1' '22.1.6.3']
+
+user_defined_names = [N/A]
+total_cost_unit = ['million' 'dollar']
